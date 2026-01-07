@@ -22,12 +22,13 @@ export default function Navbar() {
     <nav className="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16 items-center">
+
           {/* LOGO */}
           <Link
             to="/"
             className="text-2xl font-bold text-amber-600 dark:text-amber-400"
           >
-           B Jewellers
+            B Jewellers
           </Link>
 
           {/* DESKTOP MENU */}
@@ -44,27 +45,34 @@ export default function Navbar() {
             <Link to="/contact" className="hover:text-amber-600 dark:hover:text-amber-400">
               Contact
             </Link>
+          </div>
 
-            {/* Dark Mode Toggle */}
+          {/* RIGHT ACTIONS */}
+          <div className="flex items-center gap-3">
+
+            {/* DARK MODE TOGGLE – ALWAYS VISIBLE */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
+              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 transition"
+              aria-label="Toggle Theme"
             >
               {darkMode ? (
                 <Sun className="w-5 h-5 text-yellow-400" />
               ) : (
-                <Moon className="w-5 h-5" />
+                <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
               )}
             </button>
-          </div>
 
-          {/* MOBILE BUTTON */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
-          >
-            {menuOpen ? <X /> : <Menu />}
-          </button>
+            {/* MOBILE MENU BUTTON */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
+              aria-label="Toggle Menu"
+            >
+              {menuOpen ? <X /> : <Menu />}
+            </button>
+
+          </div>
         </div>
       </div>
 
@@ -100,22 +108,6 @@ export default function Navbar() {
             >
               Contact
             </Link>
-
-            {/* Mobile Dark Toggle */}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="flex items-center gap-3 mt-4 p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
-            >
-              {darkMode ? (
-                <>
-                  <Sun className="text-yellow-400" /> Light Mode
-                </>
-              ) : (
-                <>
-                  <Moon /> Dark Mode
-                </>
-              )}
-            </button>
           </div>
         </div>
       )}
