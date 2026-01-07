@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { Sun, Moon, Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("theme") === "dark"
-  );
+  // ✅ DEFAULT LIGHT MODE
+  const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -22,7 +21,6 @@ export default function Navbar() {
     <nav className="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16 items-center">
-
           {/* LOGO */}
           <Link
             to="/"
@@ -33,24 +31,35 @@ export default function Navbar() {
 
           {/* DESKTOP MENU */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="hover:text-amber-600 dark:hover:text-amber-400">
+            <Link
+              to="/"
+              className="hover:text-amber-600 dark:hover:text-amber-400"
+            >
               Home
             </Link>
-            <Link to="/about" className="hover:text-amber-600 dark:hover:text-amber-400">
+            <Link
+              to="/about"
+              className="hover:text-amber-600 dark:hover:text-amber-400"
+            >
               About
             </Link>
-            <Link to="/shop" className="hover:text-amber-600 dark:hover:text-amber-400">
+            <Link
+              to="/shop"
+              className="hover:text-amber-600 dark:hover:text-amber-400"
+            >
               Shop
             </Link>
-            <Link to="/contact" className="hover:text-amber-600 dark:hover:text-amber-400">
+            <Link
+              to="/contact"
+              className="hover:text-amber-600 dark:hover:text-amber-400"
+            >
               Contact
             </Link>
           </div>
 
           {/* RIGHT ACTIONS */}
           <div className="flex items-center gap-3">
-
-            {/* DARK MODE TOGGLE – ALWAYS VISIBLE */}
+            {/* THEME TOGGLE */}
             <button
               onClick={() => setDarkMode(!darkMode)}
               className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 transition"
@@ -59,19 +68,17 @@ export default function Navbar() {
               {darkMode ? (
                 <Sun className="w-5 h-5 text-yellow-400" />
               ) : (
-                <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
+                <Moon className="w-5 h-5 text-gray-800" />
               )}
             </button>
 
-            {/* MOBILE MENU BUTTON */}
+            {/* MOBILE MENU */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
-              aria-label="Toggle Menu"
             >
               {menuOpen ? <X /> : <Menu />}
             </button>
-
           </div>
         </div>
       </div>
@@ -80,34 +87,16 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
           <div className="px-4 py-6 space-y-4">
-            <Link
-              to="/"
-              onClick={() => setMenuOpen(false)}
-              className="block text-lg hover:text-amber-600 dark:hover:text-amber-400"
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              onClick={() => setMenuOpen(false)}
-              className="block text-lg hover:text-amber-600 dark:hover:text-amber-400"
-            >
-              About
-            </Link>
-            <Link
-              to="/shop"
-              onClick={() => setMenuOpen(false)}
-              className="block text-lg hover:text-amber-600 dark:hover:text-amber-400"
-            >
-              Shop
-            </Link>
-            <Link
-              to="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="block text-lg hover:text-amber-600 dark:hover:text-amber-400"
-            >
-              Contact
-            </Link>
+            {["/", "/about", "/shop", "/contact"].map((path, i) => (
+              <Link
+                key={i}
+                to={path}
+                onClick={() => setMenuOpen(false)}
+                className="block text-lg hover:text-amber-600 dark:hover:text-amber-400"
+              >
+                {path === "/" ? "Home" : path.replace("/", "").toUpperCase()}
+              </Link>
+            ))}
           </div>
         </div>
       )}
