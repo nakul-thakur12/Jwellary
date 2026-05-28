@@ -78,13 +78,13 @@ export default function Contact() {
             <p>
               <strong>📍 Address:</strong>
               <br />
-              Main Market, Your City,
+              Main Market, Indore,
               <br />
-              State – PIN Code
+              MP 452010
             </p>
 
             <p>
-              <strong>✉️ Email:</strong> info@eternalgold.com
+              <strong>✉️ Email:</strong> info@bejnathjewellers.com
             </p>
           </div>
 
