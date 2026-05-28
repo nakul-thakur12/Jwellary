@@ -56,10 +56,10 @@ export default function Home() {
   const testimonials = [
     { name: "Priya Sharma", review: "Beautiful designs & pure gold." },
     { name: "Rajesh Kumar", review: "Very trusted jewellery shop." },
-    { name: "Anjali Patel", review: "Loved my mangalsutra ❤️" },
+    { name: "Aman Patel", review: "Loved my Wife mangalsutra ❤️" },
     { name: "Vikram Singh", review: "Great quality & fair pricing." },
-    { name: "Neha Gupta", review: "Perfect bridal collection!" },
-    { name: "Amit Desai", review: "Excellent service & staff." },
+    { name: "Aryan Gupta", review: "Perfect Jwellary collection!" },
+    { name: "Priya Desai", review: "Excellent service & staff." },
   ];
 
   return (
