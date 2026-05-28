@@ -369,12 +369,12 @@ export default function Home() {
               key={i}
               className="min-w-[280px] bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 text-center"
             >
-              <img
+              {/* <img
                 src={`https://i.pravatar.cc/80?img=${i + 10}`}
                 loading="lazy"
                 alt={t.name}
                 className="w-14 h-14 rounded-full mx-auto mb-4"
-              />
+              /> */}
 
               <h4 className="font-semibold text-base dark:text-white">
                 {t.name}
